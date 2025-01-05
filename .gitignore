@@ -1,0 +1,13 @@
+# Exclude Python cache files
+*.pyc
+__pycache__/
+
+# Exclude the SQLite database
+db.sqlite3
+
+# Exclude environment variables file
+.env
+
+# Exclude media and static files (if generated dynamically)
+media/
+staticfiles/

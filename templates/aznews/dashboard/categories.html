@@ -1,0 +1,44 @@
+{% extends "aznews/dashboard/header.html" %}
+{% block content %}
+
+   <!-- Main Content -->
+   <div class="main-content" id="main-content">
+    <header>
+        Manage Your Category
+    </header>
+    <h2>Post List</h2>
+    <a href="{% url 'category-create' %}" class="btn btn-success">Add New Category</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Number</th>
+               
+                <th>Category</th>
+                <th>Action</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Demo Data -->
+            {% for category in categoriess %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+               
+                <td>{{ category.name|title }}</td>
+                
+                
+                <td>
+                    <a href="{% url 'category-update' category.id %}" class="btn btn-success"><i class="far fa-edit" title="click to edit"></i>
+                    <a href="{% url 'category-delete' category.id %}" class="btn btn-danger"><i class="far fa-trash-alt" title="click to Delete"></i></a>
+                </td>
+              </tr>
+              {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}

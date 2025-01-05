@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Dashboard</title>
+    <link href="{% static 'aznews/assets/css/css2.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'aznews/assets/css/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'aznews/assets/css/fontawesome-all.min.css' %}">
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div style="padding-left: 200px; padding-top: 20px;">
+        <a href="/"><i class="fas fa-home" style="color: aliceblue;"></i></a>
+        <!-- <a href="#"><p><i class="fas fa-sign-out-alt" style="color: aliceblue;"></i></p></a>  -->
+        
+      </div>
+      
+      <a href="{% url 'dashboard' %}"><h2 style="margin-top: 60px; color: aliceblue;">AZNews Dashboard</h2></a>
+      <ul>
+        <li>
+          <a href="{% url 'dashboard' %}">Dash Home</a>
+        </li>
+        <li>
+          <a href="{% url 'tag-list' %}">Tags</a>
+        </li>
+        <li>
+          <a href="{% url 'category-list' %}">Categories</a>
+        </li>
+        <li>
+          <a href="{% url 'post-list-view' %}">Published Posts</a>
+        </li>
+        <li>
+          <a href="{% url 'inactive-post-view' %} "> In-Active Posts </a>
+        </li>
+        <li>
+          <a href="{% url 'draft-list-view' %}">Unpublished Posts </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Toggle Button -->
+    <button class="toggle-btn" id="toggle-btn">☰</button>
+
+   
+
+      {% block content %}
+      {% endblock content %}
+
+    
+
+    <script src="{% static 'aznews/assets/js/dashboard.js' %}"></script>
+</body>
+</html>

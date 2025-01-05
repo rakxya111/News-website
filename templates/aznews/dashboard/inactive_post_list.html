@@ -1,0 +1,45 @@
+{% extends "aznews/dashboard/header.html" %}
+{% block content %}
+   <!-- Main Content -->
+<div class="main-content" id="main-content">
+
+    <h2>In-Active Post List</h2>
+   
+
+    <table>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Featured Image</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Tags</th>
+                <th>status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for post in posts1 %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'post-detail' post.pk %}"></a><img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="featured-image" width="100px"></td></a>
+                <td><a href="{% url 'dash-post-detail' post.pk %}">{{ post.title|truncatewords:20 }} </a></td>
+                <td>{{ post.category.name|title }}</td>
+                <td> {{ post.tag.all|join:", " }}</td>
+                <td> {{ post.status }}</td>
+                
+                <td>
+                    
+                    <a href="{% url 'make-active-view' post.pk %}" class="btn btn-success" title="Click to Activate">Activate</a>
+                   
+                </td>
+              </tr>
+              {% endfor %}
+
+        </tbody>
+    </table>
+   
+</div>
+
+{% endblock content %}

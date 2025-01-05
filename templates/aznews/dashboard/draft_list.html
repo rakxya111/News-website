@@ -1,0 +1,42 @@
+{% extends "aznews/dashboard/header.html" %}
+{% block content %}
+   <!-- Main Content -->
+<div class="main-content" id="main-content">
+
+    <h2>Unpublished Post List</h2>
+     <table>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Featured Image</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Tags</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for post in postss %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'draft-detail-view' post.pk %}"></a><img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="featured-image" width="100px"></td></a>
+                <td><a href="{% url 'dash-post-detail' post.pk %}">{{ post.title|truncatewords:20 }} </a></td>
+                <td>{{ post.category.name|title }}</td>
+                <td> {{ post.tag.all|join:", " }}</td>
+                
+                <td>
+                    <a href="{% url 'draft-detail-view' post.pk %}" title="Edit this Post" class="btn btn-warning"><i class="far fa-edit" title="click to edit"></i></a>
+                
+                <a href="{% url 'draft-delete-view' post.pk %}" class="btn btn-danger"><i class="far fa-trash-alt" title="click to Delete"></i></a>
+                <a href="{% url 'draft-publish-view' post.pk %}" class="btn btn-success"><i class="fas fa-upload" title="click to Publish"></i></a>
+                </td>
+              </tr>
+              {% endfor %}
+
+        </tbody>
+    </table>
+   
+</div>
+
+{% endblock content %}
